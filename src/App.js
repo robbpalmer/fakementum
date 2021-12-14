@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import reddit from "./api/reddit";
+import Clock from "./components/Clock";
+import Source from './components/Source'
+import Joke from "./components/Joke";
+import Weather from "./components/Weather";
 
-function App() {
+const App = () => {
+  let [backgrounds, setBackgrounds] = useState([]);
+  let [source, setSource] = useState([]);
+
+  let getBackgrounds =  async () => {
+    let response = await reddit.get();
+    let randomNum = Math.floor(Math.random() * 101)
+    setBackgrounds(response.data.data.children[randomNum].data.url) 
+    setSource(response.data.data.children[randomNum].data.title)
+  }
+  useEffect(() => {
+    getBackgrounds()
+  }, []);
+    
+  if (!backgrounds) {
+    return console.log('ErrorORORO')
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Weather />
+      <Clock />
+      <Source src={source} backgrounds={backgrounds}/>
+      <Joke />
+      
     </div>
   );
 }
