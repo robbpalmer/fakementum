@@ -8,6 +8,8 @@ import Weather from "./components/Weather";
 const App = () => {
   let [backgrounds, setBackgrounds] = useState([]);
   let [source, setSource] = useState([]);
+  let [lat, setLat] = useState([]);
+  let [lon, setLon] = useState([]);
 
   let getBackgrounds =  async () => {
     let response = await reddit.get();
@@ -15,6 +17,7 @@ const App = () => {
     setBackgrounds(response.data.data.children[randomNum].data.url) 
     setSource(response.data.data.children[randomNum].data.title)
   }
+
   useEffect(() => {
     getBackgrounds()
   }, []);
