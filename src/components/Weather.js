@@ -25,7 +25,7 @@ let Weather = () => {
       setTemp(response.data.current.temp)
       setIcon(`http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
     }
-    if(lat !== undefined) getWeatherData();
+    if(lat !== undefined && lon !== undefined) getWeatherData();
       // console.log('The lat is', lat)
       // console.log('the lon is', lon)
     }, [lat, lon]);

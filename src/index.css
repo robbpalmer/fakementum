@@ -55,6 +55,7 @@ h2 {
 }
 .source {
     position: absolute;
+    width: 33vw;
     color: white;
     text-shadow: 0px 0px 30px black;
 }
@@ -83,8 +84,9 @@ h2 {
     width: 100px;
     height: 45px;
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
+    background-color: rgba(255, 235, 205, 0.397);
+    border-radius: 3px;
 }
 
 #weather-icon {
