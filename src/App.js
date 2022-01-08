@@ -8,8 +8,6 @@ import Weather from "./components/Weather";
 const App = () => {
   let [backgrounds, setBackgrounds] = useState([]);
   let [source, setSource] = useState([]);
-  let [lat, setLat] = useState([]);
-  let [lon, setLon] = useState([]);
 
   let getBackgrounds =  async () => {
     let response = await reddit.get();
