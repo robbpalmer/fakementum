@@ -12,27 +12,33 @@ let Weather = () => {
 
     useEffect(() => {
       navigator.geolocation.getCurrentPosition((position) => {
-        setLat(position.coords.latitude)
-        setLon(position.coords.longitude)
+        setLat(Math.round((position.coords.latitude + Number.EPSILON) * 1000) / 1000)
+        setLon(Math.round((position.coords.longitude + Number.EPSILON) * 1000) / 1000)
       })
 
       let getWeatherData = async () => {
-      let response = await axios.create({
-        baseURL: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`
-      }).get();
-      console.log(response)
-      setWeather(response.data.current.weather[0].description)
-      setTemp(response.data.current.temp)
-      setIcon(`http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
+        if(lat.toString().length > 2 && lon.toString().length > 2) {
+            let response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`)
+            .catch(err => {
+              if (err.response.status == 429) {
+                setTemp(420)
+                setIcon('10d')
+              }
+            })
+              console.log(response)
+              setWeather(response.data.current.weather[0].description)
+              setTemp(response.data.current.temp)
+              setIcon(`http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
+        } else {
+        return
+      }
+       
     }
-    if(lat !== undefined && lon !== undefined) getWeatherData();
+    getWeatherData();
       // console.log('The lat is', lat)
       // console.log('the lon is', lon)
     }, [lat, lon]);
       
-    if (!weather) {
-      return console.log('ErrorORORO')
-    }
     return(
         <div id="weather-container">
           <p>{Math.round(temp)}°</p>

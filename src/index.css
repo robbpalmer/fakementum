@@ -14,11 +14,9 @@ body {
 p {
     color: white;
     text-shadow: 0px 0px 15px gray;
-    position: relative;
-    justify-self: center;
-    /* font-size: 25px; */
-    /* float: right;
-    position: relative; */
+    float: left;
+    /* position: relative; */
+    /* justify-self: center; */
 }
 
 h2 {
@@ -61,7 +59,6 @@ h2 {
 }
 
 .joke-container {
-    
     display: flex;
     margin: auto auto 10px auto;
     justify-content: center;
