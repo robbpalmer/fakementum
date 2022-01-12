@@ -18,15 +18,25 @@ let Weather = () => {
 
       let getWeatherData = async () => {
         if(lat.toString().length > 2 && lon.toString().length > 2) {
-            let response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`)
-              if (!response) {
-                setTemp(420)
-                setIcon('10d')
-              }
+          try {
+            let response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`);
               console.log(response)
               setWeather(response.data.current.weather[0].description)
               setTemp(response.data.current.temp)
               setIcon(`http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
+            } catch (error) {
+              setIcon('02d')
+                setTemp(420)
+              if (error.response) {
+                console.log(error.response.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              } else if (error.request) {
+                console.log(error.request);
+              } else {
+                  console.log('Error', error.message)
+              }
+            }
         }  
     }
     let getCityName = async () => {
