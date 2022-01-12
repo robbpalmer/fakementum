@@ -4,6 +4,7 @@ import Clock from "./components/Clock";
 import Source from './components/Source'
 import Joke from "./components/Joke";
 import Weather from "./components/Weather";
+import Todos from "./components/Todos";
 
 const App = () => {
   let [backgrounds, setBackgrounds] = useState([]);
@@ -33,6 +34,7 @@ const App = () => {
       <Clock />
       <Source src={source} backgrounds={backgrounds} link={href}/>
       <Joke />
+      <Todos />
       
     </div>
   );
