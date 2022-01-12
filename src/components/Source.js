@@ -1,12 +1,12 @@
 import React from "react";
 
 
-let Source = ({src, backgrounds}) => {
+let Source = ({src, backgrounds, link}) => {
     document.body.style.backgroundImage = `url(${backgrounds})`
     return(
-        <div className="source">
-            {src}
-        </div>
+        <a href={link} target="_blank" className="source">
+            {src} 
+        </a>
     )
 }
 

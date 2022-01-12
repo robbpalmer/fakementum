@@ -11,7 +11,7 @@ let Clock = () => {
         } else return hours
     }
 
-    let getMinutes = () => {
+    let getTheMinutes = () => {
         let mins = new Date().getMinutes();
         if(mins < 10) {
             return `0${mins}`
@@ -31,7 +31,7 @@ let Clock = () => {
     return(
         <div className='clock-container'>
             <h1 className="clock">
-                {getTheHours() + ':' + getMinutes()}
+                {getTheHours() + ':' + getTheMinutes()}
             </h1>
             <h2>
                 {getGreeting()}

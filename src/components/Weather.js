@@ -19,31 +19,40 @@ let Weather = () => {
       let getWeatherData = async () => {
         if(lat.toString().length > 2 && lon.toString().length > 2) {
             let response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`)
-            .catch(err => {
-              if (err.response.status == 429) {
+              if (!response) {
                 setTemp(420)
                 setIcon('10d')
               }
-            })
               console.log(response)
               setWeather(response.data.current.weather[0].description)
               setTemp(response.data.current.temp)
               setIcon(`http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
-        } else {
-        return
+        }  
+    }
+    let getCityName = async () => {
+      if(lat.toString().length > 2 && lon.toString().length > 2) {
+        let response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=50&appid=1fd5b0f0d730c3f552c99458ab6bd06d`)
+        setLoc(response.data[0].name)
+      } else {
+          return
       }
-       
     }
     getWeatherData();
+    getCityName();
       // console.log('The lat is', lat)
       // console.log('the lon is', lon)
     }, [lat, lon]);
       
     return(
+      <div >
         <div id="weather-container">
           <p>{Math.round(temp)}°</p>
           <img alt={''} src={icon} id="weather-icon"/>
+        </div> 
+        <div>
+        <text id="location">{loc}</text>
         </div>
+      </div>  
     )
 }
 

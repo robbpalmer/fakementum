@@ -8,12 +8,14 @@ import Weather from "./components/Weather";
 const App = () => {
   let [backgrounds, setBackgrounds] = useState([]);
   let [source, setSource] = useState([]);
+  let [href, setHref] = useState([]);
 
   let getBackgrounds =  async () => {
     let response = await reddit.get();
     let randomNum = Math.floor(Math.random() * 101)
     setBackgrounds(response.data.data.children[randomNum].data.url) 
     setSource(response.data.data.children[randomNum].data.title)
+    setHref("http://www.reddit.com" + response.data.data.children[randomNum].data.permalink)
   }
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const App = () => {
     <div className='container'>
       <Weather />
       <Clock />
-      <Source src={source} backgrounds={backgrounds}/>
+      <Source src={source} backgrounds={backgrounds} link={href}/>
       <Joke />
       
     </div>
