@@ -34,7 +34,7 @@ let Clock = () => {
         if(hours > 11 && hours < 17) {
         setGreeting('Good afternoon')
         } else if (hours >= 17) {
-            setGreeting('Good evenening')
+            setGreeting('Good evening')
         } else setGreeting('Good Morning')
     } 
 
@@ -53,9 +53,7 @@ let Clock = () => {
             <h1 className="clock clockline">
                 {hours + ':' + minutes}
             </h1>
-            <p class="clockline">
-                {ampm}
-            </p>
+           
             <h2 id="greeting">
                 {greeting}
             </h2>          

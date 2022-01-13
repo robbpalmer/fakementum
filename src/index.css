@@ -11,12 +11,21 @@ a:link {
 
 a:hover {
     text-shadow: 0px 0px 30px beige;
-    cursor:default;
 }
 
 /* #location {
     visibility: hidden;
 } */
+
+.bold {
+    font-weight: bold;
+    padding-bottom: 4px;
+  
+}
+
+.strike {
+    text-decoration: line-through white 3px;
+}
 
 body {
     background-repeat: no-repeat;
@@ -79,7 +88,7 @@ p {
 
 .joke-container {
     display: flex;
-    margin: auto auto 10px auto;
+    margin: auto auto 20px auto;
     justify-content: center;
     font-size: 120%;
     color: white;
@@ -89,7 +98,7 @@ p {
 #joke {
     display: flex;
     text-align: center;
-    padding: 5vh;
+    /* padding: 5vh; */
     text-shadow: 0px 0px 15px black
 }
 
@@ -119,6 +128,19 @@ p {
     width: 80px;
     font-size: 80%;
     text-align: center;
+}
+
+#todo-container {
+    font-size: 85%;
+    position: absolute;
+    width: 20vw;
+    height: 120px;
+    right: 10px;
+    bottom: 10px;
+    overflow: scroll;
+    background-color: rgba(255, 235, 205, 0.397);
+    border-radius: 7px;
+    padding: 5px 11px 5px 5vw;
 }
 
 /* #weather-container:hover {
