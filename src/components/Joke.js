@@ -13,9 +13,6 @@ let Joke = () => {
       getJoke()
     }, []);
       
-    if (!joke) {
-      return console.log('ErrorORORO')
-    }
     return(
         <div className='joke-container'>
           <div id='joke'>
