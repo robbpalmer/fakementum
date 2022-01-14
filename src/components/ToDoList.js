@@ -4,7 +4,7 @@ import Todo from './Todo';
 import ToDoForm from './ToDoForm'
 
 let ToDoList = () => {
-    let [todosData, setTodosData] = useState(data);
+    let [todosData, setTodosData] = useState([]);
     let [isActive, setIsActive] = useState(false)
 
     let handleToggle = (id) => {
@@ -35,7 +35,7 @@ let ToDoList = () => {
             if(isActive) {
                 return(
                 <div id="todo-container">
-                    <p className="bold todohover" onClick={handleHideClick}>TO-DO's</p>
+                    <span className="bold todohover" onClick={handleHideClick}>TO-DO's</span>
                     {todosData.map(todo => {
                         return (
                             <div>

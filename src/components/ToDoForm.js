@@ -20,7 +20,7 @@ let ToDoForm = ({addTask}) => {
                 type="text" 
                 onChange={handleChange} 
                 onSubmit={handleSubmit}
-                placeholder="Enter task..." 
+                placeholder="+" 
             />
         </form>
     )
