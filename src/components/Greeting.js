@@ -31,7 +31,7 @@ let Greeting = ({date}) => {
     }
 
     let handleDclick = () => {
-        setPlaceholder(name);
+        setUserInput(name);
         setName('');
         saveData('')
     }
