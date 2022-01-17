@@ -7,11 +7,16 @@ let ToDoList = () => {
     let [todosData, setTodosData] = useState([]);
     let [isActive, setIsActive] = useState(false)
 
+    let saveData = (newList) => {
+        localStorage.setItem("todos", JSON.stringify(newList))
+    }
+
     let handleToggle = (id) => {
         let mapped = todosData.map(todo => {
             return todo.id == id ? {...todo, complete: !todo.complete} : {...todo};
         });
         setTodosData(mapped);
+        saveData(mapped);
     }
 
     let handleHideClick = () => {
@@ -23,12 +28,14 @@ let ToDoList = () => {
             return !todo.complete;
         });
         setTodosData(filtered);
+        saveData(filtered);
     }
 
     let addTask = (userInput) => {
         let copy = [...todosData];
-        copy = [...copy, { id: todosData.length + 1, task: userInput, complete: false}]
+        copy = [...copy, { id: Date.now(), task: userInput, complete: false}]
         setTodosData(copy)
+        saveData(copy);
     }
 
     let handleActiveness = () => {
@@ -55,8 +62,10 @@ let ToDoList = () => {
     }
 
     useEffect(() => {
-        console.log(isActive);
         handleActiveness();
+        if (localStorage.getItem("todos")) {
+            setTodosData(JSON.parse(localStorage.getItem("todos")))
+        }
     },[isActive])
 
     return(

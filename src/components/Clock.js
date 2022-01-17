@@ -5,17 +5,11 @@ let Clock = () => {
     let [minutes, setMinutes] = useState([]);
     let [greeting, setGreeting] = useState([]);
     let [date, setDate] = useState(new Date());
-    let [ampm, setAmpm] = useState([]);
 
     function refreshClock() {
         setDate(new Date());
     }
 
-    let getAmpm = () => {
-        if (date.getHours() >= 12) {
-            setAmpm('PM')
-        } else setAmpm('AM')
-    }
 
     let getTheHours = () =>  {
         let hours = date.getHours();
@@ -39,7 +33,6 @@ let Clock = () => {
     } 
 
     useEffect(() => {
-        getAmpm();
         getTheHours();
         getTheMinutes();
         getTheGreeting();

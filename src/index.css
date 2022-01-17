@@ -22,8 +22,9 @@ a:hover {
 
 .bold {
     font-weight: bold;
+    font-size: 120%;
+    color: white;
     padding-bottom: 4px;
-    text-decoration: underline;
 }
 
 .strike {
