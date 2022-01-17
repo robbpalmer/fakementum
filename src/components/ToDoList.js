@@ -42,7 +42,7 @@ let ToDoList = () => {
             if(isActive) {
                 return(
                 <div id="todo-container">
-                    <span className="bold todohover" onClick={handleHideClick}>TO-DO's</span>
+                    <span className="bold todohover" onClick={handleHideClick}>To-Do's</span>
                     {todosData.map(todo => {
                         return (
                             <div>
@@ -56,7 +56,7 @@ let ToDoList = () => {
             )
         } else {
             return(
-                <p className="todohover" id="todo-container" onClick={handleHideClick}>To-Do's</p>
+                <span className="bold todohover" id="todo-container" onClick={handleHideClick}>To-Do's</span>
             )
         }
     }

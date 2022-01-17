@@ -16,6 +16,7 @@ let ToDoForm = ({addTask}) => {
     return(
         <form onSubmit={handleSubmit}>
             <input 
+                className="todo-input"
                 value={userInput} 
                 type="text" 
                 onChange={handleChange} 

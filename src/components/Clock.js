@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
+import Greeting from './Greeting';
 
 let Clock = () => {
     let [hours, setHours] = useState([]);
     let [minutes, setMinutes] = useState([]);
-    let [greeting, setGreeting] = useState([]);
     let [date, setDate] = useState(new Date());
 
     function refreshClock() {
@@ -23,19 +23,11 @@ let Clock = () => {
             setMinutes(`0${mins}`)
         } else setMinutes(mins)
     }
-    let getTheGreeting = () => {
-        let hours = date.getHours()
-        if(hours > 11 && hours < 17) {
-        setGreeting('Good afternoon')
-        } else if (hours >= 17) {
-            setGreeting('Good evening')
-        } else setGreeting('Good Morning')
-    } 
 
     useEffect(() => {
         getTheHours();
         getTheMinutes();
-        getTheGreeting();
+        // getTheGreeting();
         let timerId = setInterval(refreshClock, 1000)
         return function cleanup() {
             clearInterval(timerId);
@@ -46,10 +38,11 @@ let Clock = () => {
             <h1 className="clock clockline">
                 {hours + ':' + minutes}
             </h1>
+            <Greeting date={date}/>
            
-            <h2 id="greeting">
+            {/* <h2 id="greeting">
                 {greeting}
-            </h2>          
+            </h2>           */}
         </div> 
     )
 }
