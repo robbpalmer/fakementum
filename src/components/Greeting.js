@@ -4,6 +4,7 @@ let Greeting = ({date}) => {
     let [greeting, setGreeting] = useState([]);
     let [name, setName] = useState('');
     let [userInput, setUserInput] = useState('');
+    let [placeholder, setPlaceholder] = useState('');
 
     let saveData = (newName) => {
         localStorage.setItem("userName", newName)
@@ -30,6 +31,7 @@ let Greeting = ({date}) => {
     }
 
     let handleDclick = () => {
+        setPlaceholder(name);
         setName('');
         saveData('')
     }
@@ -50,7 +52,7 @@ let Greeting = ({date}) => {
                 name.length === 0 ? 
                 <span>
                 <form onSubmit={handleSubmit} id="greeting-form">
-                    <input value={userInput} onChange={handleChange} onSubmit={handleSubmit} className="greetinginput"/>
+                    <input placeholder={placeholder} value={userInput} onChange={handleChange} onSubmit={handleSubmit} className="greetinginput"/>
                 </form>
                 </span> : ''
             }
