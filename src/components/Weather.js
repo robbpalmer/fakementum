@@ -6,8 +6,8 @@ let Weather = () => {
     let [weather, setWeather] = useState([]);
     let [temp, setTemp] = useState([])
     let [icon, setIcon] = useState([])
-    let [lat, setLat] = useState([])
-    let [lon, setLon] = useState([])
+    let [lat, setLat] = useState(null)
+    let [lon, setLon] = useState(null)
     let [loc, setLoc] = useState([])
 
     useEffect(() => {
@@ -17,7 +17,7 @@ let Weather = () => {
       })
 
       let getWeatherData = async () => {
-        if(lat.toString().length > 2 && lon.toString().length > 2) {
+        if(lat && lon) {
           try {
             let response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`);
               console.log(response)
@@ -40,7 +40,7 @@ let Weather = () => {
         }  
     }
     let getCityName = async () => {
-      if(lat.toString().length > 2 && lon.toString().length > 2) {
+      if(lat && lon) {
         let response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=50&appid=1fd5b0f0d730c3f552c99458ab6bd06d`)
         setLoc(response.data[0].name)
       } else {

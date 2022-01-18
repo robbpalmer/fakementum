@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import oneliners from '../api/oneliners'
 
 let Joke = () => {
-    let [joke, setJoke] = useState([]);
+    let [joke, setJoke] = useState(null);
   
     let getJoke =  async () => {
       let response = await oneliners.get();

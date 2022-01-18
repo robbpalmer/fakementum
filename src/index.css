@@ -40,7 +40,9 @@ body {
     background-position: center;
     background-size: cover;
     overflow: hidden;
+    margin: 0;
 }
+
 
 p {
     color: white;
@@ -93,6 +95,7 @@ p {
     color: white;
     text-shadow: 0px 0px 30px black;
     transition: text-shadow 0.25s;
+    margin-left: 10px;
 }
 
 .joke-container {
@@ -142,6 +145,7 @@ p {
     width: 80px;
     font-size: 80%;
     text-align: center;
+    text-shadow: 0px 0px 15px black;
 }
 
 #todo-container {
@@ -218,4 +222,26 @@ input:focus::placeholder {
 
 #greeting-form {
     display: inline-block;
+}
+
+#loading-screen {
+    background-color: rgb(51, 49, 49);
+    width: 100vw;
+    height: 100vw;
+    margin: 0px;
+    padding-top: 35vh;
+}
+
+#loading-icon {
+    display: block;
+    width: 150px;
+    height: 150px;
+    animation: fadeInFadeOut 2s;
+    animation-iteration-count: infinite;
+    margin: auto; 
+}
+@keyframes fadeInFadeOut {
+    0% {opacity: 0.3;}
+    50% {opacity: 1;}
+    100% {opacity: 0.3;}
 }

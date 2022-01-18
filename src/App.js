@@ -5,11 +5,13 @@ import Source from './components/Source'
 import Joke from "./components/Joke";
 import Weather from "./components/Weather";
 import ToDoList from "./components/ToDoList";
+import Loading from "./components/Loading";
 
 const App = () => {
   let [backgrounds, setBackgrounds] = useState([]);
   let [source, setSource] = useState([]);
   let [href, setHref] = useState([]);
+  let [isLoading, setIsLoading] = useState(true)
 
   let getBackgrounds =  async () => {
     let response = await reddit.get();
@@ -21,22 +23,24 @@ const App = () => {
 
   useEffect(() => {
     getBackgrounds()
+    setTimeout(() => setIsLoading(false), 12000)
   }, []);
-    
-  if (!backgrounds) {
-    return console.log('ErrorORORO')
-  }
 
 
   return (
-    <div className='container'>
-      <Weather />
-      <Clock />
-      <Source src={source} backgrounds={backgrounds} link={href}/>
-      <Joke />
-      <ToDoList />
-      
-    </div>
+    <>
+      {isLoading === false ? ( 
+      <div className='container'>  
+        <Weather />
+        <Clock />
+        <Source src={source} backgrounds={backgrounds} link={href}/>
+        <Joke />
+        <ToDoList />
+      </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 }
 
