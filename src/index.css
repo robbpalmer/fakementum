@@ -96,6 +96,7 @@ p {
     text-shadow: 0px 0px 30px black;
     transition: text-shadow 0.25s;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .joke-container {

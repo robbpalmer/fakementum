@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     getBackgrounds()
-    setTimeout(() => setIsLoading(false), 12000)
+    setTimeout(() => setIsLoading(false), 2000)
   }, []);
 
 
