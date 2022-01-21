@@ -1,5 +1,6 @@
 {
   "name": "fakementum",
+  "homepage": "https://robbpalmer.github.io/fakementum",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
