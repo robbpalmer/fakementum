@@ -10,24 +10,21 @@ let Clock = () => {
         setDate(new Date());
     }
 
-
-    let getTheHours = () =>  {
-        let hours = date.getHours();
-        if (hours > 12) {
-            setHours(hours - 12)
-        } else setHours(hours)
-    }
-    let getTheMinutes = () => {
-        let mins = date.getMinutes();
-        if(mins < 10) {
-            setMinutes(`0${mins}`)
-        } else setMinutes(mins)
-    }
-
     useEffect(() => {
+        let getTheHours = () =>  {
+            let hours = date.getHours();
+            if (hours > 12) {
+                setHours(hours - 12)
+            } else setHours(hours)
+        }
+        let getTheMinutes = () => {
+            let mins = date.getMinutes();
+            if(mins < 10) {
+                setMinutes(`0${mins}`)
+            } else setMinutes(mins)
+        }
         getTheHours();
         getTheMinutes();
-        // getTheGreeting();
         let timerId = setInterval(refreshClock, 1000)
         return function cleanup() {
             clearInterval(timerId);
@@ -39,10 +36,6 @@ let Clock = () => {
                 {hours + ':' + minutes}
             </h1>
             <Greeting date={date}/>
-           
-            {/* <h2 id="greeting">
-                {greeting}
-            </h2>           */}
         </div> 
     )
 }

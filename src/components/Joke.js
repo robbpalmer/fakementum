@@ -7,8 +7,11 @@ let Joke = () => {
     let getJoke =  async () => {
       let response = await oneliners.get();
       let randomNum = Math.floor(Math.random() * 101)
-      setJoke(response.data.data.children[randomNum].data.title)
+      if(response) {
+        setJoke(response.data.data.children[randomNum].data.title)
+      } else return
     }
+
     useEffect(() => {
       getJoke()
     }, []);

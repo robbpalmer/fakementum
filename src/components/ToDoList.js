@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import data from '../json/data.json';
 import Todo from './Todo';
 import ToDoForm from './ToDoForm'
 
@@ -12,11 +11,14 @@ let ToDoList = () => {
     }
 
     let handleToggle = (id) => {
+        console.log(id)
         let mapped = todosData.map(todo => {
+            console.log(todo)
             return todo.id == id ? {...todo, complete: !todo.complete} : {...todo};
         });
         setTodosData(mapped);
         saveData(mapped);
+        console.log(mapped)
     }
 
     let handleHideClick = () => {
@@ -62,11 +64,10 @@ let ToDoList = () => {
     }
 
     useEffect(() => {
-        handleActiveness();
         if (localStorage.getItem("todos")) {
             setTodosData(JSON.parse(localStorage.getItem("todos")))
         }
-    },[isActive])
+    },[])
 
     return(
         <div>

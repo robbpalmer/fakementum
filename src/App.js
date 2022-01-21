@@ -8,11 +8,12 @@ import ToDoList from "./components/ToDoList";
 import Loading from "./components/Loading";
 
 const App = () => {
-  let [backgrounds, setBackgrounds] = useState([]);
+  let [backgrounds, setBackgrounds] = useState(null);
   let [source, setSource] = useState([]);
   let [href, setHref] = useState([]);
   let [isLoading, setIsLoading] = useState(true)
 
+  //get reddit background image api and set state
   let getBackgrounds =  async () => {
     let response = await reddit.get();
     let randomNum = Math.floor(Math.random() * 101)
@@ -22,18 +23,20 @@ const App = () => {
   }
 
   useEffect(() => {
-    getBackgrounds()
-    setTimeout(() => setIsLoading(false), 2000)
-  }, []);
+    //check if backgrounds have been set to determine if page is loading
+    if(!backgrounds) {
+      getBackgrounds()
+    } else setIsLoading(false)
+  }, [backgrounds]);
 
 
   return (
     <>
-      {isLoading === false ? ( 
-      <div className='container'>  
+      {!isLoading ? ( 
+      <div className='container'>
+        <Source src={source} backgrounds={backgrounds} link={href}/> 
         <Weather />
         <Clock />
-        <Source src={source} backgrounds={backgrounds} link={href}/>
         <Joke />
         <ToDoList />
       </div>
