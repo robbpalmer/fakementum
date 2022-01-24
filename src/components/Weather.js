@@ -21,7 +21,7 @@ let Weather = () => {
           try {
             let response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=d9ecf1836d30f559f8beb48586830f6e&units=imperial`);
               setTemp(response.data.current.temp)
-              setIcon(`http://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
+              setIcon(`https://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`)
             } catch (error) {
               let errorIcon = `http://openweathermap.org/img/wn/02d@2x.png`
               setIcon(errorIcon)
