@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/fakementum/static/css/main.c6bb3f04.chunk.css",
-    "main.js": "/fakementum/static/js/main.19f297ca.chunk.js",
-    "main.js.map": "/fakementum/static/js/main.19f297ca.chunk.js.map",
+    "main.js": "/fakementum/static/js/main.4f7e6db0.chunk.js",
+    "main.js.map": "/fakementum/static/js/main.4f7e6db0.chunk.js.map",
     "runtime-main.js": "/fakementum/static/js/runtime-main.369482b8.js",
     "runtime-main.js.map": "/fakementum/static/js/runtime-main.369482b8.js.map",
     "static/js/2.87e161ed.chunk.js": "/fakementum/static/js/2.87e161ed.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.369482b8.js",
     "static/js/2.87e161ed.chunk.js",
     "static/css/main.c6bb3f04.chunk.css",
-    "static/js/main.19f297ca.chunk.js"
+    "static/js/main.4f7e6db0.chunk.js"
   ]
 }
