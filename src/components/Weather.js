@@ -42,7 +42,7 @@ let Weather = () => {
     //check for lat and lon before retrieving city name
     let getCityName = async () => {
       if(lat && lon) {
-        let response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=50&appid=1fd5b0f0d730c3f552c99458ab6bd06d`)
+        let response = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=50&appid=1fd5b0f0d730c3f552c99458ab6bd06d`)
         setLoc(response.data[0].name)
       } else {
           return
